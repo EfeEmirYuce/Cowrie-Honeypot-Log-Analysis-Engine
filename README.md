@@ -2,7 +2,6 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Libraries](https://img.shields.io/badge/libraries-pandas%20%7C%20seaborn%20%7C%20matplotlib-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 This project provides a complete, end-to-end pipeline for analyzing SSH/Telnet honeypot logs from Cowrie. It automates the process of ingesting raw JSON log files, processing tens of thousands of events, classifying attacker behavior using a custom rule-based engine, and generating insightful reports and visualizations.
 
@@ -83,15 +82,13 @@ The raw data for this analysis comes from the Cowrie SSH/Telnet honeypot.
 
 Cowrie is an open-source medium- and high-interaction SSH and Telnet honeypot designed to log brute force attacks and the shell interaction performed by the attacker. The easiest way to set it up is by using its official Docker image.
 
-For detailed installation instructions, please refer to the **[Official Cowrie Docker Documentation](https://cowrie.readthedocs.io/en/latest/docker/index.html)**.
+For detailed installation instructions, please check out cowrie github repository (https://github.com/cowrie/cowrie).
 
 After running the honeypot, it will generate log files in a `logs/` directory in the format `cowrie.json.YYYY-MM-DD`. These are the files that our analysis script uses.
 
 #### About the Dataset
 
-The log files used for the development and demonstration of this project were collected from a live Cowrie honeypot exposed to the internet over a period of [örneğin: 1 hafta]. To use this script, place your collected `cowrie*.json` files into a `logs` directory inside the main project folder.
-
-*(Note: If you do not have your own logs, you can find sample honeypot datasets online by searching for "cowrie honeypot dataset" or "honeypot json logs" on academic or security research websites.)*
+The log file samples used for the development and demonstration of this project were taken from kaggle (https://www.kaggle.com/datasets/nlaha11/global-ssh-and-telnet-honeypot-logs-cowrie?resource=download). To use this script with your own cowrie logs, place your collected `cowrie*.json` files into a `logs` directory inside the main project folder.
 
 ### 6. How to Run the Analyzer
 
