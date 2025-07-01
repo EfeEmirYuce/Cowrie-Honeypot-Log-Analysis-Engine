@@ -123,6 +123,7 @@ After the script finishes, you will find four new files in your project director
 
 ### 8. How the Analysis Engine Works
 
+'''mermaid
 graph TD
     %% --- Section 1: Data Input ---
     A[<img src='https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png' width='40' /><br><b>Raw Cowrie Logs</b><br>(cowrie*.json files in 'logs' directory)]
@@ -161,6 +162,7 @@ graph TD
     style A fill:#f9f9f9,stroke:#333,stroke-width:2px
     style I fill:#e6f3ff,stroke:#0055A4,stroke-width:2px
     style J fill:#e6fff2,stroke:#006400,stroke-width:2px
+'''
 
 The core of this project is the custom-built, rule-based engine in the `analyze_session_with_rules` function. It does not rely on any external AI API.
 
