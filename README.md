@@ -58,8 +58,8 @@ Follow these steps to set up and run the analysis engine on your own machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [your-repository-url]
-    cd [your-repository-name]
+    git clone [https://github.com/EfeEmirYuce/Cowrie-Honeypot-Log-Analysis-Engine]
+    cd [Cowrie-Honeypot-Log-Analysis-Engine]
     ```
 
 2.  **Create a `requirements.txt` file** in the main project directory and paste the following content into it:
