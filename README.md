@@ -1,4 +1,4 @@
-# Rule-Based Honeypot Log Analysis Engine
+# Cowrie Honeypot Log Analysis Engine
 
 ![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)
 ![Libraries](https://img.shields.io/badge/libraries-pandas%20%7C%20seaborn%20%7C%20matplotlib-orange.svg)
