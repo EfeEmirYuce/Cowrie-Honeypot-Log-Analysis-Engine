@@ -123,6 +123,45 @@ After the script finishes, you will find four new files in your project director
 
 ### 8. How the Analysis Engine Works
 
+graph TD
+    %% --- Section 1: Data Input ---
+    A[<img src='https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png' width='40' /><br><b>Raw Cowrie Logs</b><br>(cowrie*.json files in 'logs' directory)]
+
+    %% --- Section 2: The Analysis Pipeline (analysis.py) ---
+    subgraph "analysis.py: Automated Pipeline"
+        B(read_log_files)<br>Read & Parse All Events)
+        C{Create Master DataFrame<br>(pandas)}
+        D(group_and_filter_sessions)<br>Group by Attacker Session)
+        E((<b>Rule-Based Analysis Engine</b><br>analyze_session_with_rules))
+        F{Compile Final<br>Analysis DataFrame}
+    end
+
+    %% --- Section 3: Output Generation ---
+    subgraph "Output Generation"
+        G(save_report<br>Save to Files)
+        H(create_visualizations<br>Generate Plots)
+    end
+    
+    %% --- Section 4: Final Artifacts ---
+    I[<img src='https://static.thenounproject.com/png/133554-200.png' width='30' /><br><b>Reports</b><br>report.csv<br>report.html]
+    J[<img src='https://static.thenounproject.com/png/1320252-200.png' width='30' /><br><b>Visualizations</b><br>intent.png<br>skill_level.png]
+
+    %% --- Connecting the pipeline ---
+    A --> B
+    B --> |300,000+ Events| C
+    C --> |Raw DataFrame| D
+    D --> |26,000+ Sessions| E
+    E --> |Classified Sessions| F
+    F --> |Final Analysis DataFrame| G
+    F --> |Final Analysis DataFrame| H
+    G --> I
+    H --> J
+
+    %% --- Styling ---
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style I fill:#e6f3ff,stroke:#0055A4,stroke-width:2px
+    style J fill:#e6fff2,stroke:#006400,stroke-width:2px
+
 The core of this project is the custom-built, rule-based engine in the `analyze_session_with_rules` function. It does not rely on any external AI API.
 
 - **Keyword Dictionary:** The engine uses a predefined dictionary of `KEYWORDS` containing common commands associated with different attack phases (reconnaissance, download, destruction, etc.).
