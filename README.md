@@ -123,6 +123,46 @@ After the script finishes, you will find four new files in your project director
 
 ### 8. How the Analysis Engine Works
 
+graph TD
+    %% --- Section 1: Data Input ---
+    A[Raw Cowrie Logs\n(cowrie*.json files in 'logs' directory)]
+
+    %% --- Section 2: The Analysis Pipeline (analysis.py) ---
+    subgraph "analysis.py: Automated Pipeline"
+        B[read_log_files\n(Read & Parse All Events)]
+        C{Create Master DataFrame\n(pandas)}
+        D[group_and_filter_sessions\n(Group by Attacker Session)]
+        E[Rule-Based Analysis Engine\n(analyze_session_with_rules)]
+        F{Compile Final\nAnalysis DataFrame}
+    end
+
+    %% --- Section 3: Output Generation ---
+    subgraph "Output Generation"
+        G[save_report\n(Save to Files)]
+        H[create_visualizations\n(Generate Plots)]
+    end
+    
+    %% --- Section 4: Final Artifacts ---
+    I[Reports\nreport.csv, report.html]
+    J[Visualizations\nintent.png, skill_level.png]
+
+    %% --- Connecting the pipeline ---
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    G --> I
+    H --> J
+
+    %% --- Styling (Not all Mermaid renderers support these fully) ---
+    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style I fill:#e6f3ff,stroke:#0055A4,stroke-width:2px
+    style J fill:#e6fff2,stroke:#006400,stroke-width:2px
+
+
 The core of this project is the custom-built, rule-based engine in the `analyze_session_with_rules` function. It does not rely on any external AI API.
 
 - **Keyword Dictionary:** The engine uses a predefined dictionary of `KEYWORDS` containing common commands associated with different attack phases (reconnaissance, download, destruction, etc.).
